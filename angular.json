@@ -23,7 +23,10 @@
               "src/assets"
             ],
             "styles": [
+<<<<<<< HEAD
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+=======
+>>>>>>> cf04fad (initial commit)
               "src/styles.css"
             ],
             "scripts": []
