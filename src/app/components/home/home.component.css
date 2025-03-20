@@ -1,0 +1,27 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    background-color: #1c1e21;
+  }
+  
+  .welcome-message {
+    margin-bottom: 20px;
+  }
+  
+  .welcome-message h1 {
+    font-size: 3rem;
+    color: #333;
+  }
+  
+  .welcome-message p {
+    font-size: 1.2rem;
+    color: #555;
+  }
+
+  iframe{
+    margin-left: 160px;
+  }

@@ -1,0 +1,105 @@
+<style>
+    .container{
+     background-color: black;
+    }
+    .navbar {
+      background-color: #3a3b3d;
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+    }
+  
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      color: white;
+      font-size: 1.5rem;
+      margin-left: 10px;
+    }
+  
+    .navbar-brand img {
+      margin-right: 10px;
+    }
+  
+    button {
+      margin-right: 20px;
+      width: 150px;
+    }
+  
+    .d-flex {
+      display: flex;
+      align-items: center;
+    }
+
+    input[type=text]{
+      float: left;
+      padding: 6px;
+      border: none;
+      margin-top: 8px;
+      margin-right: 16px;
+      font-size: 17px;
+      border-radius: 16px;
+      color: rgb(255, 255, 255);
+      background-color: #67696c;
+      width: 300px;
+    }
+
+    .search-bar {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      max-width: 300px; /* Adjust width as needed */
+    }
+
+    .search-bar i {
+      position: absolute;
+      left: 10px;
+      font-size: 16px;
+      color: #aaa; /* Adjust color */
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 10px 10px 10px 35px; /* Ensure left padding for icon */
+      border: none;
+      border-radius: 16px;
+      outline: none;
+    }
+
+    .search-bar input:focus {
+      border-color: #007bff;
+    }
+
+    .search-bar input::placeholder{
+      color: #aaa;
+    }
+  </style>
+  
+  <div>
+    <!-- Conditionally show header and sidebar if not on the login page -->
+    <div *ngIf="!isLoginPage">
+      <!-- Navbar (Header) -->
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <div class="navbar-brand">
+            <img src="../assets/onepiece.png" style="width: 50px; height: 50px;" />
+            <div class="search-bar">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" placeholder="Search Piecebook">
+            </div>
+          </div>
+        </div>
+      </nav>
+  
+      <!-- Sidebar (Below Navbar) -->
+      <app-sidebar></app-sidebar>
+    </div>
+  
+    <!-- Main Content -->
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>  
+  
+ 

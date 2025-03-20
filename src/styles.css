@@ -1,0 +1,63 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1c1e21;
+  }
+  
+  .container {
+    max-width: 900px;
+    margin: auto;
+    height: 80vh;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .create-section,
+  .update-section,
+  .delete-section,
+  .display-section {
+    margin: 20px 0;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table, th, td {
+    border: 1px solid #ddd;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: center;
+  }
+  
+  button {
+    padding: 10px 20px;
+    margin: 5px 0;
+    cursor: pointer;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  input {
+    padding: 10px;
+    margin: 5px 0;
+    width: calc(100% - 22px);
+    box-sizing: border-box;
+  }
+  
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,55 @@
+.container {
+    padding: 20px;
+    background-color: #242526;
+    width: 400px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+  }
+
+  h1,
+  label {
+    color: white;
+  }
+
+  label {
+    text-align: left;
+    display: block; /* Ensures the label takes up the full width */
+    margin-bottom: 5px; /* Adds space between the label and the input */
+  }
+
+  .form-group {
+    margin-top: 14px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+  }
+
+  input[type="text"],
+  input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #1c1c1e;
+    color: white;
+  }
+
+  input[type="text"]::placeholder,
+  input[type="number"]::placeholder {
+    color: #888;
+  }
+
+  .button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 300px;
+    flex-direction: row-reverse;
+  }

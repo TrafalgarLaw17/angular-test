@@ -1,0 +1,42 @@
+<div class="permissions-container">
+    <h2>Manage Permissions</h2>
+
+    <table class="permission-table">
+        <thead>
+            <tr>
+                <th>Modules</th>
+                <th *ngFor="let category of permissionCategories">{{ category }}</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <ng-container *ngIf="flattenedPermissions.length > 0; else noPermissions">
+                <ng-container *ngFor="let perm of flattenedPermissions">
+                    <tr>
+                        <td [style.padding-left.px]="perm.level * 20">
+                            {{ perm.permissionName }}
+                        </td>
+
+                        <td *ngFor="let category of permissionCategories">
+                            <input 
+                                type="checkbox" 
+                                [checked]="isChecked(perm, category)" 
+                                (change)="togglePermission(perm, category)"
+                                [disabled]="isDisabled(perm, category)">
+                        </td>                        
+                    </tr>
+                </ng-container>
+            </ng-container>
+
+            <ng-template #noPermissions>
+                <tr>
+                    <td colspan="6" style="text-align: center;">No permissions found.</td>
+                </tr>
+            </ng-template>
+        </tbody>
+    </table>
+
+    <button (click)="updatePermissions()" [disabled]="!flattenedPermissions.length">
+        Save Permissions
+    </button>
+</div>

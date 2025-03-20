@@ -1,0 +1,16 @@
+<div class="edit-profile">
+    <h2>Edit Profile</h2>
+    <div class="form-group">
+      <label for="name">Name:</label>
+    <input type="text" [(ngModel)]="name" placeholder="Name" />
+    </div>
+    <div class="form-group">
+      <label for="age">Age:</label>
+      <input type="number" [(ngModel)]="age" placeholder="Age" />
+    </div>
+    <div class="button-group">
+      <button (click)="updateProfile()" class="btn btn-success">Save</button>
+      <button onclick="history.back()" class="btn btn-secondary">Cancel</button>
+    </div>
+  </div>
+  

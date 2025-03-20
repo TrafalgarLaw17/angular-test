@@ -1,0 +1,15 @@
+<!-- Sidebar Component -->
+<div class="sidebar" [class.collapsed]="isCollapsed">
+    <div class="sidebar-header">
+      <img src="../../../assets/donsavage.jpeg" style="width: 50px; height: 50px;" *ngIf="!isCollapsed" />
+      <span *ngIf="!isCollapsed">Chick N Watermelon</span>
+      <i class="fa-solid fa-bars toggle-btn" (click)="toggleSidebar()"></i>
+    </div>
+    <ul class="nav-links">
+      <li><a routerLink="/home"><i class="fa-solid fa-house"></i> <span *ngIf="!isCollapsed">Home</span></a></li>
+      <li><a routerLink="/profiles"><i class="fa-solid fa-user"></i> <span *ngIf="!isCollapsed">Profiles</span></a></li>
+      <li><a routerLink="/permissions"><i class="fa-solid fa-user-lock"></i> <span *ngIf="!isCollapsed">Permissions</span></a></li>
+      <li><a routerLink="/login"><i class="fa-solid fa-right-from-bracket"></i> <span *ngIf="!isCollapsed">Logout</span></a></li>
+    </ul>
+  </div>
+  

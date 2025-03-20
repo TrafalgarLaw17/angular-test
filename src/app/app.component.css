@@ -1,0 +1,27 @@
+/* Ensure the navbar stays at the top */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  /* Wrapper to keep sidebar below navbar */
+  .content-wrapper {
+    display: flex;
+    margin-top: 70px; /* Adjust based on navbar height */
+  }
+  
+  /* Sidebar Styles */
+  app-sidebar {
+    width: 250px;
+    flex-shrink: 0;
+  }
+  
+  /* Main Content Adjusts Based on Sidebar */
+  .main-content {
+    flex-grow: 1;
+    padding: 20px;
+  }
+  
