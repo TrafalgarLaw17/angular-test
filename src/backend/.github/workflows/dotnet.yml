@@ -1,0 +1,48 @@
+name: .NET Core CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.102'
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build the project
+        run: dotnet build --configuration Release
+
+      # Happy path tests
+      - name: Run Happy Path Tests
+        run: dotnet test --configuration Release --filter "Category=happy" --logger "console;verbosity=detailed" > TestResults/TodoTestResults/todo-happy-test-result.txt
+
+      - name: Upload Negative Path Tests
+        uses: actions/upload-artifact@v4
+        with:
+          name: todo-happy-test-result
+          path: TestResults/TodoTestResults/todo-happy-test-result.txt
+
+      # Negative path tests
+      - name: Run Negative Path Tests
+        run: dotnet test --configuration Release --filter "Category=negative" --logger "console;verbosity=detailed" > TestResults/TodoTestResults/todo-negative-test-result.txt
+
+      - name: Upload Negative Path Tests
+        uses: actions/upload-artifact@v4
+        with:
+          name: todo-negative-test-result
+          path: TestResults/TodoTestResults/todo-negative-test-result.txt

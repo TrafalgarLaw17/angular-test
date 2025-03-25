@@ -17,7 +17,7 @@ export class AppComponent {
   deleteId: number | null = null; // Allow null as a valid value
   data: any[] = [];
 
-  private apiUrl = 'http://localhost:5000/list'; // Your Node.js API endpoint
+  private apiUrl = 'http://localhost:7095/api/Account/list'; // Your Node.js API endpoint
 
   isLoginPage: boolean = false; // Flag to control header/sidebar visibility
 
@@ -26,9 +26,7 @@ export class AppComponent {
 
     // Check the current route to hide/show header & sidebar
     this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.isLoginPage = event.url === '/login';
-      }
+      this.isLoginPage = this.router.url.includes('/login');
     });
   }
 

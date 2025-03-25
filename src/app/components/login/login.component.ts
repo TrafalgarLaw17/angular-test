@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -11,44 +11,30 @@ import { HttpClient } from '@angular/common/http';
 export class LoginComponent {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router, private http: HttpClient) {
+  errorMessage: any;
+
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.loginForm = this.fb.group({
-      name: ['', [Validators.required]], // Changed from email to name
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      username: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]]
     });
   }
 
-  seePassword() {
-    const showpass = document.getElementById("password") as HTMLInputElement;
-    showpass.type = showpass.type === "password" ? "text" : "password";
-  }
-  
-
   onSubmit(): void {
     if (this.loginForm.valid) {
-      const { name, password } = this.loginForm.value;
-      console.log('Attempting login with:', name, password);
-  
-      this.http.post('http://localhost:5000/login', { name, password }).subscribe({
-        next: (response: any) => {
-          console.log('Login success:', response);
-          localStorage.setItem('user', JSON.stringify(response.user));
-  
-          // Redirect based on user ID
-          if (response.user.id === 1 || response.user.id === 2) {
-            this.router.navigate(['/home']);
-          } else if (response.user.id === 3) {
-            this.router.navigate(['/alternate']); // Change this to your actual alternate route
-          } else {
-            alert('Unexpected user role');
-          }
+      const { username, email } = this.loginForm.value;
+
+      this.authService.login(username, email).subscribe({
+        next: (response) => {
+          console.log("Login successful", response);
+          this.authService.setToken(response.token);
+          this.router.navigate(['/home']); // Redirect to home after login
         },
-        error: (error) => {
-          console.error('Login failed:', error);
-          alert('Invalid name or password!');
+        error: (err) => {
+          console.error("Login failed", err);
+          this.errorMessage = "Invalid username or email"
         }
       });
     }
   }
-  
 }

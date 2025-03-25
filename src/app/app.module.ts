@@ -8,6 +8,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 
+
 import { AppComponent } from './app.component';
 import { ViewProfilesComponent } from './components/view-profiles/view-profiles.component';
 import { CreateProfileComponent } from './components/create-profile/create-profile.component';

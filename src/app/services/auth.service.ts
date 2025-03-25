@@ -1,24 +1,42 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://your-api-url.com/auth'; // Change to your backend URL
+  private apiUrl = 'http://localhost:7095/api/Account/list'; // Change this if your backend uses a different port
 
   constructor(private http: HttpClient) {}
 
-  login(email: string, password: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, { email, password });
+  // ✅ Login request (calls .NET API)
+  login(username: string, email: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': 'Basic ' + btoa(username + ':' + email) // Encode username & email
+    });
+  
+    return this.http.get('http://localhost:7095/api/Account/list', { headers });
+  }
+  
+
+  // ✅ Store JWT token after successful login
+  setToken(token: string): void {
+    localStorage.setItem('authToken', token);
   }
 
-  isAuthenticated(): boolean {
-    return !!localStorage.getItem('token');
+  // ✅ Get JWT token for authentication
+  getToken(): string | null {
+    return localStorage.getItem('authToken');
   }
 
-  logout(): void {
-    localStorage.removeItem('token');
+  getAccounts(): Observable<any> {
+    const token = localStorage.getItem('token'); // Get JWT token from storage
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+  
+    return this.http.get('http://localhost:7095/api/Account/list', { headers });
   }
+  
 }
