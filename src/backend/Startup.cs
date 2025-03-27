@@ -39,9 +39,9 @@ namespace FRA_Todolist_prj
             services.AddControllers();
 
             // Authentication & Authorization
-            services.AddAuthentication("BasicAuthentication")
-                .AddScheme<AuthenticationSchemeOptions, BasicAuth>("BasicAuthentication", null);
-            services.AddAuthorization();
+            // services.AddAuthentication("BasicAuthentication")
+            //     .AddScheme<AuthenticationSchemeOptions, BasicAuth>("BasicAuthentication", null);
+            // services.AddAuthorization();
 
             // BCrypt for hashing
             services.AddSingleton<BCrypt.Net.BCrypt>();
@@ -81,8 +81,8 @@ namespace FRA_Todolist_prj
             
             app.UseCors("AllowAngular");
             app.UseRouting();
-            app.UseAuthentication();
-            app.UseAuthorization();
+            // app.UseAuthentication();
+            // app.UseAuthorization();
             app.MapControllers();
         }
     }

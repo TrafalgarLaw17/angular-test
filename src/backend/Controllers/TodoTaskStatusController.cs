@@ -10,7 +10,7 @@ namespace FRA_Todolist_prj.Controllers
     [Route("api/[controller]")]
     [Tags("Todo Task Status")]
     [ApiController]
-    [Authorize(AuthenticationSchemes = "BasicAuthentication")]
+    // [Authorize(AuthenticationSchemes = "BasicAuthentication")]
     public class TodoTaskStatusController : ControllerBase
     {
         private readonly TodoContext _todoContext;

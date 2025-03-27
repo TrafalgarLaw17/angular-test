@@ -13,7 +13,7 @@ namespace FRA_Todolist_prj.Controllers
     [Route("api/[controller]")]
     [Tags("Todo List")]
     [ApiController]
-    [Authorize(AuthenticationSchemes = "BasicAuthentication")]
+    // [Authorize(AuthenticationSchemes = "BasicAuthentication")]
     public class TodoController : ControllerBase
     {
         private readonly TodoContext _todoContext;

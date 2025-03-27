@@ -27,11 +27,13 @@ export class LoginComponent {
       this.authService.login(username, email).subscribe({
         next: (response) => {
           console.log("Login successful", response);
+          console.log(username, email);
           this.authService.setToken(response.token);
           this.router.navigate(['/home']); // Redirect to home after login
         },
         error: (err) => {
           console.error("Login failed", err);
+          console.log(username, email);
           this.errorMessage = "Invalid username or email"
         }
       });

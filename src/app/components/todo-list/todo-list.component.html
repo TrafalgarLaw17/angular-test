@@ -1,0 +1,69 @@
+<div class="todo-container">
+    <h2 class="text-center">Todo List</h2>
+  
+    <!-- Todo Form -->
+    <form [formGroup]="todoForm" (ngSubmit)="addOrUpdateTodo()" class="mb-4">
+      <div class="mb-3">
+        <label for="todoTitle" class="form-label">Todo Title</label>
+        <input 
+          type="text" 
+          id="todoTitle"
+          class="form-control" 
+          formControlName="todoTitle"
+          placeholder="Enter todo title" 
+          required>
+        <div *ngIf="todoForm.controls['todoTitle'].invalid && todoForm.controls['todoTitle'].touched" class="text-danger">
+          Title is required and must be less than 255 characters.
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="todoDescription" class="form-label">Description</label>
+        <textarea 
+          id="todoDescription" 
+          class="form-control" 
+          formControlName="todoDescription" 
+          rows="3"
+          placeholder="Enter description (optional)"></textarea>
+      </div>
+  
+      <div class="mb-3">
+        <label for="todoTaskStatusId" class="form-label">Status</label>
+        <select id="todoTaskStatusId" class="form-select" formControlName="todoTaskStatusId">
+          <option *ngFor="let status of taskStatuses" [value]="status.todoTaskStatusId">
+            {{ status.todoTaskStatusName }}
+          </option>
+        </select>
+      </div>
+        
+  
+      <button type="submit" class="btn btn-primary">
+        {{ isEditing ? 'Update Todo' : 'Add Todo' }}
+      </button>
+      <button type="button" class="btn btn-secondary ms-2" (click)="resetForm()" *ngIf="isEditing">Cancel</button>
+    </form>
+  
+    <!-- Todo Table -->
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let todo of todos">
+          <td>{{ todo.todoTitle }}</td>
+          <td>{{ todo.todoDescription }}</td>
+          <td>{{ todo.todoTaskStatusName }}</td>
+          <td>
+            <button class="btn btn-warning btn-sm me-2" (click)="editTodo(todo)">Edit</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteTodo(todo.todoId)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

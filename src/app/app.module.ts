@@ -18,6 +18,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NotEditableComponent } from './components/not-editable/not-editable.component';
 import { LoginComponent } from './components/login/login.component';
 import { PermissionsComponent } from './components/permissions/permissions.component';
+import { TodoComponent } from './components/todo-list/todo-list.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { PermissionsComponent } from './components/permissions/permissions.compo
     HomeComponent,
     NotEditableComponent,
     LoginComponent,
-    PermissionsComponent
+    PermissionsComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,
